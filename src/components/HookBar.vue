@@ -1,46 +1,17 @@
 <template>
-  <div class="side_bar">
-   <!-- <li v-for="hook in items" :key = hook >
-      <input type="button" class = "button" @click="hook.toggled = !hook.toggled">
-      <input type="checkbox" class="checkbox">
-      <span>{{hook.hook_class}}</span>
-
-      <div class="second_list" v-show="hook.toggled">
-        <ul>
-          <li v-for="item in hook.hook_items" :key = item>
-            <input type="checkbox" class="checkbox">
-            <span>{{item}}</span>
-          </li>
-        </ul>
-      </div>
-  </li>-->
-
-    <q-tree class="col-12 col-sm-6"
-            :nodes="items"
-            node-key="label"
-            tick-strategy="leaf"
-            no-connectors
-            v-model:selected= "selected"
-            v-model:ticked="ticked"
-            v-model:expanded="expanded"
-    />
-
-  </div>
 
 </template>
 
 
 <script>
 import { ionChevronUp } from '@quasar/extras/ionicons-v5'
-import { ref } from 'vue'
+import { ref ,reactive, toRefs} from 'vue'
 export default {
   name: 'HookBar',
-  methods:{
-  },
   created(){
     this.ionChevronUp = ionChevronUp
   },
-  data() {
+  data(){
     return {
       selected: ref('Send'),
       ticked: ref(['HeapCreate','Registry']),
@@ -55,11 +26,20 @@ export default {
       ]
     }
   },
-  method:{
-    return_ticked(){
-      this.$emit('return_val', this.items)
+  methods:{
+    return_ticked (){
+      context.$emit('return_val', this.ticked)
     }
-  }
+  },
+  // setup(props, context){
+  //   const this = reactive()
+  //
+  //
+  //   return{
+  //     return_ticked,
+  //     ...toRefs(this)
+  //   }
+  // }
 }
 </script>
 

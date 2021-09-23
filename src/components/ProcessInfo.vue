@@ -52,7 +52,7 @@
       <q-item-section>
         <q-field outlined  stack-label >
           <template v-slot:control>
-            <div class="self-center no-outline" >{{processInfo['processName']}}</div>
+            <div class="self-center no-outline" >{{process_info.process_name}}</div>
           </template>
         </q-field>
       </q-item-section>
@@ -68,7 +68,7 @@
       <q-item-section>
         <q-field outlined  stack-label >
           <template v-slot:control>
-            <div class="self-center no-outline" >{{processInfo['processID']}}</div>
+            <div class="self-center no-outline" >{{process_info.process_ID}}</div>
           </template>
         </q-field>
       </q-item-section>
@@ -84,7 +84,7 @@
       <q-item-section>
         <q-field outlined  stack-label >
           <template v-slot:control>
-            <div class="self-center no-outline"  >{{processInfo['processPriority']}}</div>
+            <div class="self-center no-outline"  >{{process_info.process_priority}}</div>
           </template>
         </q-field>
       </q-item-section>
@@ -104,7 +104,7 @@
           <template v-slot:control>
             <q-list separator>
 
-              <q-item v-for="i in processInfo['processModule']" :key="i">
+              <q-item v-for="i in process_info.process_module" :key="i">
                 <q-item-section>
                   <q-item-label>{{i}}</q-item-label>
                 </q-item-section>
@@ -121,11 +121,17 @@
 </template>
 
 <script>
+import {reactive} from 'vue'
 export default {
   name: "ProcessInfo",
-  props:['processInfo'],
-  data(){
-  }
+  props:['process_info']
+  // setup(props){
+  //   const process_info = reactive( props.process_info);
+  //   return {
+  //     // eslint-disable-next-line vue/no-dupe-keys
+  //     process_info,
+  //   }
+  // }
 }
 </script>
 <style scoped >

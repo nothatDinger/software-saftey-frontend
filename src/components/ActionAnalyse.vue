@@ -16,9 +16,9 @@
         <template v-slot:control>
           <div class="self-center full-width no-outline" tabindex="0" align="center" style="font-size: 17px">Action Analyse</div>
         </template>
-        <q-badge color="red" floating transparent rounded>3</q-badge>
+        <q-badge color="red" floating transparent rounded>{{warning_text.length}}</q-badge>
       </q-field>
-      <q-timeline-entry v-for="item in warningText" :key="item"
+      <q-timeline-entry v-for="item in warning_text" :key="item"
         :subtitle="item.time" :body="item.text"
       >
 
@@ -33,16 +33,11 @@
 import { ionAlertCircleOutline } from '@quasar/extras/ionicons-v5'
 export default {
   name: "ActionAnalyse",
-  props :['warningText'],
+  props :['warning_text'],
   created() {
     this.ionAlertCircleOutline = ionAlertCircleOutline
   },
-  data(){
 
-    return{
-      // warningText:[{time:"19:00",text:"there is a message alert "},{time:"19:02",text:"there is something wrong"},{time:"19:03",text:"HeapAllocating !"}]
-    }
-  }
 }
 </script>
 <style scoped>
